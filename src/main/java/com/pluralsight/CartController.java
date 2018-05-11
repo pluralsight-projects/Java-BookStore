@@ -78,17 +78,17 @@ public class CartController extends HttpServlet {
 
    Book existingBook = bookDAO.getBook(id);
 
-   ShoppingCart cartBean = null;
+   ShoppingCart shoppingCart = null;
    Object objCartBean = session.getAttribute("cart");
 
    if(objCartBean!=null) {
-    cartBean = (ShoppingCart) objCartBean ;
+    shoppingCart = (ShoppingCart) objCartBean ;
    } else {
-    cartBean = new ShoppingCart();
-    session.setAttribute("cart", cartBean);
+    shoppingCart = new ShoppingCart();
+    session.setAttribute("cart", shoppingCart);
    }
 
-   cartBean.addCartItem(existingBook, quantity);
+   shoppingCart.addCartItem(existingBook, quantity);
   }
 
 	protected void updateCart(HttpServletRequest request, HttpServletResponse response)
@@ -99,8 +99,8 @@ public class CartController extends HttpServlet {
    String quantityStr = request.getParameter("quantity");
    int quantity = Integer.parseInt(quantityStr);
 
-   ShoppingCart cartBean = (ShoppingCart)session.getAttribute("cart");
-   cartBean.updateCartItem(index, quantity);
+   ShoppingCart shoppingCart = (ShoppingCart)session.getAttribute("cart");
+   shoppingCart.updateCartItem(index, quantity);
   }
 
 	protected void deleteFromCart(HttpServletRequest request, HttpServletResponse response)
@@ -109,8 +109,8 @@ public class CartController extends HttpServlet {
     String indexStr = request.getParameter("index");
     int index = Integer.parseInt(indexStr);
 
-		ShoppingCart cartBean = (ShoppingCart)session.getAttribute("cart");
- 		cartBean.deleteCartItem(index);
+		ShoppingCart shoppingCart = (ShoppingCart)session.getAttribute("cart");
+ 		shoppingCart.deleteCartItem(index);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
