@@ -58,7 +58,6 @@ public class CartController extends HttpServlet {
 				 	 deleteFromCart(request, response);
            break;
         default:
-					 response.sendRedirect("../ShoppingCart.jsp");
            break;
 			}
 		} catch (Exception e) {
@@ -66,7 +65,7 @@ public class CartController extends HttpServlet {
 			e.printStackTrace();
 		}
 
-    //response.sendRedirect("../ShoppingCart.jsp");
+		response.sendRedirect("../ShoppingCart.jsp");
 	}
 
   protected void addToCart(HttpServletRequest request, HttpServletResponse response)
@@ -78,7 +77,6 @@ public class CartController extends HttpServlet {
    int quantity = Integer.parseInt(quantityStr);
 
    Book existingBook = bookDAO.getBook(id);
-   //String strQuantity = request.getParameter("quantity");
 
    ShoppingCart cartBean = null;
    Object objCartBean = session.getAttribute("cart");
@@ -91,8 +89,6 @@ public class CartController extends HttpServlet {
    }
 
    cartBean.addCartItem(existingBook, quantity);
-	 RequestDispatcher dispatcher = request.getRequestDispatcher("/ShoppingCart.jsp");
-	 dispatcher.forward(request, response);
   }
 
 	protected void updateCart(HttpServletRequest request, HttpServletResponse response)
@@ -113,10 +109,6 @@ public class CartController extends HttpServlet {
     cartBean = new ShoppingCart();
     session.setAttribute("cart", cartBean);
    }
-
-	 session.setAttribute("cart", cartBean);
-	 RequestDispatcher dispatcher = request.getRequestDispatcher("/ShoppingCart.jsp");
-	 dispatcher.forward(request, response);
   }
 
 	protected void deleteFromCart(HttpServletRequest request, HttpServletResponse response)
@@ -135,21 +127,9 @@ public class CartController extends HttpServlet {
      cartBean = new ShoppingCart();
      session.setAttribute("cart", cartBean);
     }
-
-		session.setAttribute("cart", cartBean);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/ShoppingCart.jsp");
- 	 	dispatcher.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		PrintWriter out = response.getWriter();
-		out.println("This is the doPost() method!");
 		doGet(request, response);
-
 	}
-
 }
