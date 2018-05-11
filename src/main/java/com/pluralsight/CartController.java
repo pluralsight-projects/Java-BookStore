@@ -99,16 +99,8 @@ public class CartController extends HttpServlet {
    String quantityStr = request.getParameter("quantity");
    int quantity = Integer.parseInt(quantityStr);
 
-   ShoppingCart cartBean = null;
-   Object objCartBean = session.getAttribute("cart");
-
-   if(objCartBean!=null) {
-    cartBean = (ShoppingCart) objCartBean ;
-		cartBean.updateCartItem(index, quantity);
-   } else {
-    cartBean = new ShoppingCart();
-    session.setAttribute("cart", cartBean);
-   }
+   ShoppingCart cartBean = (ShoppingCart)session.getAttribute("cart");
+   cartBean.updateCartItem(index, quantity);
   }
 
 	protected void deleteFromCart(HttpServletRequest request, HttpServletResponse response)
@@ -117,16 +109,8 @@ public class CartController extends HttpServlet {
     String indexStr = request.getParameter("index");
     int index = Integer.parseInt(indexStr);
 
-		ShoppingCart cartBean = null;
-    Object objCartBean = session.getAttribute("cart");
-
-    if(objCartBean!=null) {
-     cartBean = (ShoppingCart) objCartBean ;
- 		 cartBean.deleteCartItem(index);
-    } else {
-     cartBean = new ShoppingCart();
-     session.setAttribute("cart", cartBean);
-    }
+		ShoppingCart cartBean = (ShoppingCart)session.getAttribute("cart");
+ 		cartBean.deleteCartItem(index);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
