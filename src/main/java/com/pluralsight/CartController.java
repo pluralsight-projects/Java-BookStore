@@ -55,7 +55,7 @@ public class CartController extends HttpServlet {
 					 updateCart(request, response);
            break;
 			 case "/delete":
-				 	 //deleteFromCart(request, response);
+				 	 deleteFromCart(request, response);
            break;
         default:
            break;
@@ -91,27 +91,27 @@ public class CartController extends HttpServlet {
    shoppingCart.addCartItem(existingBook, quantity);
   }
 
-	protected void updateCart(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException {
-	 HttpSession session = request.getSession();
-   String indexStr = request.getParameter("index");
-   int index = Integer.parseInt(indexStr);
-   String quantityStr = request.getParameter("quantity");
-   int quantity = Integer.parseInt(quantityStr);
+	 protected void updateCart(HttpServletRequest request, HttpServletResponse response)
+	 	throws ServletException, IOException {
+		 HttpSession session = request.getSession();
+	   String indexStr = request.getParameter("index");
+	   int index = Integer.parseInt(indexStr);
+	   String quantityStr = request.getParameter("quantity");
+	   int quantity = Integer.parseInt(quantityStr);
 
-   ShoppingCart shoppingCart = (ShoppingCart)session.getAttribute("cart");
-   shoppingCart.updateCartItem(index, quantity);
-  }
+	   ShoppingCart shoppingCart = (ShoppingCart)session.getAttribute("cart");
+	   shoppingCart.updateCartItem(index, quantity);
+   }
 
-	 // protected void deleteFromCart(HttpServletRequest request, HttpServletResponse response)
-	 // 	throws ServletException, IOException {
-		//HttpSession session = request.getSession();
-		//String indexStr = request.getParameter("index");
-	  //int index = Integer.parseInt(indexStr);
+	 protected void deleteFromCart(HttpServletRequest request, HttpServletResponse response)
+	 	throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String indexStr = request.getParameter("index");
+	  int index = Integer.parseInt(indexStr);
 
-		//ShoppingCart shoppingCart = (ShoppingCart)session.getAttribute("cart");
- 		//shoppingCart.deleteCartItem(index);
-	 // }
+		ShoppingCart shoppingCart = (ShoppingCart)session.getAttribute("cart");
+ 		shoppingCart.deleteCartItem(index);
+	 }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
