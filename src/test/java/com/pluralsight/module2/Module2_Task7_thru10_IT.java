@@ -63,6 +63,8 @@ public class Module2_Task7_thru10_IT {
 
 		@Test
 	  public void module2_task8() {
+			assertNotNull("Link, edit, did not work.", editPage);
+			checkForm("Edit");
       assertNotNull("Link, new, did not work.", newPage);
 			checkForm("New");
     }
@@ -74,6 +76,7 @@ public class Module2_Task7_thru10_IT {
 
 		@Test
 	  public void module2_task10() {
+			h2_correct("Edit");
 			h2_correct("New");
     }
 

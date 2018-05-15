@@ -22,20 +22,20 @@ public class ShoppingCart {
   cartItems.add(cartItem);
  }
 
- public void updateCartItem(int index, int quantity) {
-   try {
-     CartItem cartItem = (CartItem)cartItems.get(index);
-     cartItem.setQuantity(quantity);
-   } catch (Exception e) {
-     e.printStackTrace();
-   }
- }
-
- public void deleteCartItem(int index) {
-   try {
-     cartItems.remove(index);
-   } catch (Exception e) {}
- }
+ // public void updateCartItem(int index, int quantity) {
+ //   try {
+ //     CartItem cartItem = (CartItem)cartItems.get(index);
+ //     cartItem.setQuantity(quantity);
+ //   } catch (Exception e) {
+ //     e.printStackTrace();
+ //   }
+ // }
+ //
+ // public void deleteCartItem(int index) {
+ //   try {
+ //     cartItems.remove(index);
+ //   } catch (Exception e) {}
+ // }
 
  public CartItem getCartItem(int iItemIndex) {
   CartItem cartItem = null;
