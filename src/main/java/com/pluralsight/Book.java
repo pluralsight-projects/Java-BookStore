@@ -1,6 +1,6 @@
 package com.pluralsight;
 
-public class Book {
+public clas Book {
 	int id;
 	String title;
 	String author;
