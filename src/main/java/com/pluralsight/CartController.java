@@ -103,15 +103,15 @@ public class CartController extends HttpServlet {
    shoppingCart.updateCartItem(index, quantity);
   }
 
-	protected void deleteFromCart(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException {
-		HttpSession session = request.getSession();
-    String indexStr = request.getParameter("index");
-    int index = Integer.parseInt(indexStr);
-
-		ShoppingCart shoppingCart = (ShoppingCart)session.getAttribute("cart");
- 		shoppingCart.deleteCartItem(index);
-	}
+	 protected void deleteFromCart(HttpServletRequest request, HttpServletResponse response)
+	 	throws ServletException, IOException {
+	// 	String indexStr = request.getParameter("index");
+	//   int index = Integer.parseInt(indexStr);
+	// 	HttpSession session = request.getSession();
+	//
+	// 	ShoppingCart shoppingCart = (ShoppingCart)session.getAttribute("cart");
+ 	// 	shoppingCart.deleteCartItem(index);
+	 }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
