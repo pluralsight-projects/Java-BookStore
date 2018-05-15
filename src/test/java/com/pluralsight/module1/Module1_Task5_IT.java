@@ -22,7 +22,7 @@ import java.io.*;
 @PrepareForTest({DriverManager.class, PreparedStatement.class, BookDAO.class})
 public class Module1_Task5_IT {
 
-    // Verify the deleteBook() method exists in BookDAO
+    // Verify the deleteBook() in BookDAO calls prepareStatement()
     @Test
     public void module1_task5() throws Exception {
       Method method = null;

@@ -1,9 +1,10 @@
 package com.pluralsight;
 
 import java.util.ArrayList;
-
+import javax.inject.Inject;
 
 public class ShoppingCart {
+ @Inject
  private ArrayList cartItems = new ArrayList();
  private double dblOrderTotal ;
 
