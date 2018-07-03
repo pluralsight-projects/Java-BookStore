@@ -87,8 +87,8 @@ public class BookDAO {
 
         return false;
     }
-    
-    public void updateBook(Book book) { 
+
+    public void updateBook(Book book) {
     	String sql = "UPDATE book SET title = ?, author = ?, price = ? WHERE id = ?";
 
         try {
@@ -103,7 +103,7 @@ public class BookDAO {
         		e.printStackTrace();
         }
     }
-    
+
     public void deleteBook(int id)  {
         String SQL = "DELETE FROM book WHERE id = ?";
 
