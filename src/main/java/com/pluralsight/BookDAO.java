@@ -87,9 +87,13 @@ public class BookDAO {
 
         return false;
     }
-    
-    public void updateBook(Book book) { 
+
+    public void updateBook(Book book) {
     	String sql = "UPDATE book SET title = ?, author = ?, price = ? WHERE id = ?";
+=======
+
+    public void updateBook(Book book) {
+    	String sql = "UPDATE book SET title = ?, author = ?, price = ?" + "WHERE id = ?";
 
         try {
 	        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
@@ -103,8 +107,8 @@ public class BookDAO {
         		e.printStackTrace();
         }
     }
-    
-    public void deleteBook(int id)  {
+
+  public void deleteBook(int id)  {
         String SQL = "DELETE FROM book WHERE id = ?";
 
         try {
