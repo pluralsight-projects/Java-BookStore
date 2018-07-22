@@ -7,8 +7,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 public class DBConnection {
-  private Connection jdbcConnection;
+	static final String dbUrl = "jdbc:oracle:thin:@localhose1521:xe";
+	static final String username = "system";
+	static final String password = "admin";
+
+	
+	private Connection jdbcConnection;
 
   public DBConnection() {
     connect();
@@ -21,7 +27,9 @@ public class DBConnection {
   public void connect()  {
     try {
       Class.forName("org.sqlite.JDBC");
-      jdbcConnection = DriverManager.getConnection("jdbc:sqlite:book_store.db");
+     // jdbcConnection = DriverManager.getConnection("jdbc:sqlite:book_store.db");
+     
+     jdbcConnection = DriverManager.getConnection(dbUrl,username,password); 
       System.out.println("Opened database successfully");
 
       createTableIfNotExists();
