@@ -1,0 +1,64 @@
+body {
+	font-family: "Open Sans", Open Sans, "Verdana", Verdana, Arial, sans;
+}
+
+
+.container {
+	text-align: center;
+	margin: 80px auto 0px;
+
+}
+
+.booktable table {
+	width: 75%;
+	margin: 0 auto;
+}
+table, td, th {
+   border: 1px solid #ddd;
+   text-align: left;
+}
+table {
+   border-collapse: collapse;
+}
+th, td {
+  		padding: 15px;
+}
+form {
+	margin: 80px;
+	border: 1px solid #ddd;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+a {
+    text-decoration: none;
+}
+
+.active {
+    background-color: #cc0066;
+}
