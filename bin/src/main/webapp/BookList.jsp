@@ -12,8 +12,8 @@
 
 <body>
 	<ul>
-	  <li><a href="list">Book Listing</a></li>
-    <li><a class="active" href="admin">Admin</a></li>
+	  <li><a class="active" href="list">Book Listing</a></li>
+    <li><a href="admin">Admin</a></li>
 	</ul>
 
     <div class="container">
@@ -24,17 +24,15 @@
 	                <th>Title</th>
 	                <th>Author</th>
 	                <th>Price</th>
-                  <th><a href="new">Add Book</a></th>
 	            </tr>
 
-	 			      <c:forEach items="${books}" var="item">
-	                <tr>
+	 			<c:forEach items="${books}" var="item">
+	                <tr><form name="cart_form" action="/cart/addcart">
+                      <input type="hidden" name="id" value="<c:out value='${item.getId()}' />" />
 	                    <td> ${ item.getTitle() } </td>
 	                    <td> ${ item.getAuthor() } </td>
 	                    <td> <fmt:formatNumber value = "${ item.getPrice() }" type = "currency"/>  </td>
-                      <td> <a href="edit?id=<c:out value='${item.getId()}' />">Edit</a>
-                           <a href="delete?id=<c:out value='${item.getId()}' />">Delete</a> </td>
-	                </tr>
+	                </form></tr>
 	            </c:forEach>
 	        </table>
 	    </div>
