@@ -23,10 +23,10 @@ public class Module1_Task1_IT {
 
 	@Before
 	  public void setUp() throws IOException {
-	    indexUrl = "http://localhost:8080"; //System.getProperty("integration.base.url");
+	    indexUrl = "http://localhost:8088"; //System.getProperty("integration.base.url");
 	    webClient = new WebClient();
       // Open the admin page
-	    page = webClient.getPage(indexUrl + "/books/admin");
+	    page = webClient.getPage(indexUrl + "/bookstore/books/admin");
 	  }
 	  @After
 	  public void tearDown() {
