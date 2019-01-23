@@ -13,7 +13,7 @@
 <body>
 	<ul>
 	  <li><a href="list">Book Listing</a></li>
-      <li><a class="active" href="admin">Admin</a></li>
+    <li><a class="active" href="admin">Admin</a></li>
 	</ul>
 
     <div class="container">
@@ -32,8 +32,8 @@
 	                    <td> ${ item.getTitle() } </td>
 	                    <td> ${ item.getAuthor() } </td>
 	                    <td> <fmt:formatNumber value = "${ item.getPrice() }" type = "currency"/>  </td>
-                      <td> <a href="edit?id=<c:out value='${item.getId()}'/>">Edit</a>
-                           <a href="delete?id=<c:out value='${item.getId()}'/>">Delete</a> </td>
+                      <td> <a href="#edit">Edit</a>
+                           <a href="#delete">Delete</a> </td>
 	                </tr>
 	            </c:forEach>
 	        </table>
