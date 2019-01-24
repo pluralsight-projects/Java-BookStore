@@ -13,7 +13,7 @@
 <body>
 	<ul>
 	  <li><a class="active" href="list">Book Listing</a></li>
-    <li><a href="admin">Admin</a></li>
+      <li><a href="admin">Admin</a></li>
 	</ul>
 
     <div class="container">
@@ -25,7 +25,6 @@
 	                <th>Author</th>
 	                <th>Price</th>
 	            </tr>
-
 	 			<c:forEach items="${books}" var="item">
 	                <tr><form name="cart_form" action="/cart/addcart">
                       <input type="hidden" name="id" value="<c:out value='${item.getId()}' />" />
