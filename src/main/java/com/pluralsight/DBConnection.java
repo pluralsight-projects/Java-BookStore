@@ -34,7 +34,8 @@ public class DBConnection {
  private void createTableIfNotExists() {
    try {
        DatabaseMetaData meta = jdbcConnection.getMetaData();
-       ResultSet res = meta.getTables(null, null, null, new String[] {"TABLE"});
+       //ResultSet res = meta.getTables(null, null, null, new String[] {"TABLE"});
+       ResultSet res = meta.getTables(null, null, null, null);
        Statement stmt = jdbcConnection.createStatement();
        if (!res.next()) {
        	// Create table

@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +18,7 @@ import javax.inject.Inject;
  * Servlet implementation class HelloWorld
  */
 
+@WebServlet("/books/*")
 public class ControllerServlet extends HttpServlet {
 		private static final long serialVersionUID = 1L;
 		private DBConnection dbConnection;
@@ -33,9 +34,9 @@ public class ControllerServlet extends HttpServlet {
 			bookDAO = new BookDAO(dbConnection.getConnection());
     }
 
-		public void destroy() {
-			dbConnection.disconnect();
-		}
+	public void destroy() {
+		dbConnection.disconnect();
+	}
 
     public ControllerServlet() {
         super();
@@ -51,23 +52,33 @@ public class ControllerServlet extends HttpServlet {
 		try {
 			switch(action) {
 				case "/admin":
-					 showBookAdmin(request, response);
-           break;
-			  case "/new":
+					showBookAdmin(request, response);
+            break;
+			    case "/new":
 					showNewForm(request, response);
-          break;
+            break;
 				case "/insert":
 					insertBook(request, response);
-          break;
-        default:
-				   listBooks(request, response);
-           break;
+			break;
+				case "/delete":
+					deleteBook(request, response);
+            break;
+				case "/edit":
+					showEditForm(request, response);
+			break;
+				case "/update":
+					updateBook(request, response);
+			break;
+				default:
+				    listBooks(request, response);
+            break;
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+
 
 	private void showBookAdmin(HttpServletRequest request, HttpServletResponse response)
 			throws ClassNotFoundException, SQLException, ServletException, IOException {
@@ -104,7 +115,36 @@ public class ControllerServlet extends HttpServlet {
 		bookDAO.insertBook(newBook);
 		response.sendRedirect("list");
 	}
+	
+	private void deleteBook(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
+		bookDAO.deleteBook(id);
+		
+		response.sendRedirect("list");
+	}
+	
+	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
+		Book existingBook = bookDAO.getBook(id);
+		request.setAttribute("book", existingBook);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/BookForm.jsp");
+		dispatcher.forward(request, response);
+	}
+	
+	private void updateBook(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		String idString = request.getParameter("id");
+		String title = request.getParameter("booktitle");
+		String author = request.getParameter("bookauthor");
+		String priceString = request.getParameter("bookprice"); 
+		
+		Book newBook = new Book(Integer.parseInt(idString), title, author, Float.parseFloat(priceString));
 
+		bookDAO.updateBook(newBook);
+		response.sendRedirect("list");
+	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
