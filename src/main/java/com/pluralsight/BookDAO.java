@@ -92,18 +92,19 @@ public class BookDAO {
     }
     public void deleteBook(int id) {
     	
-    	String SQL = "DELETE FROM  book WHERE id = ?";
+    	String SQL = "DELETE FROM book WHERE id = ?";
     	try {
         			
     		PreparedStatement statement = jdbcConnection.prepareStatement(SQL);
 
-			statement.setInt(1, id);
+		    statement.setInt(1, id);
 			
 			statement.executeUpdate();
 			
+			
 			statement.close();
 		}   catch (SQLException e) {
-					//System.err.println("some problem"+e.getMessage());
+			System.err.println("some problem"+e.getMessage());
 					// TODO Auto-generated catch block
 			e.printStackTrace();
 			}

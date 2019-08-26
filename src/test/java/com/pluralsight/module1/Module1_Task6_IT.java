@@ -42,7 +42,7 @@ public class Module1_Task6_IT {
       try {
          method =  BookDAO.class.getMethod("deleteBook", int.class);
       } catch (NoSuchMethodException e) {
-         //e.printStackTrace();
+         System.err.println(e.getMessage());
       }
 
       String message = "The method deleteBook() doesn't exist in BookDAO.java.";
