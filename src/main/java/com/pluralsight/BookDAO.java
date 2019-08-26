@@ -91,19 +91,22 @@ public class BookDAO {
         return false;
     }
     public void deleteBook(int id) {
+    	
     	String SQL = "DELETE FROM  book WHERE id = ?";
-    			try {
+    	try {
         			
-    				PreparedStatement statement=jdbcConnection.prepareStatement(SQL);
+    		PreparedStatement statement = jdbcConnection.prepareStatement(SQL);
 
-					statement.setInt(1, id);
-					statement.executeUpdate();
-					statement.close();
-				} catch (SQLException e) {
-					System.err.println("some problem"+e.getMessage());
+			statement.setInt(1, id);
+			
+			statement.executeUpdate();
+			
+			statement.close();
+		}   catch (SQLException e) {
+					//System.err.println("some problem"+e.getMessage());
 					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+			e.printStackTrace();
+			}
     			
     }
 }
