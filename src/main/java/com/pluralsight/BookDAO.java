@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import java.util.ArrayList;
-
+import com.pluralsight.*;
 public class BookDAO {
     private Connection jdbcConnection;
     public BookDAO(Connection connection)
@@ -90,4 +90,36 @@ public class BookDAO {
 
         return false;
     }
+    public void deleteBook(int id) {
+    	String SQL = "DELETE FROM  book WHERE id = ?";
+    			try {
+        			
+    				PreparedStatement statement=jdbcConnection.prepareStatement(SQL);
+
+					statement.setInt(1, id);
+					statement.executeUpdate();
+					statement.close();
+				} catch (SQLException e) {
+					System.err.println("some problem"+e.getMessage());
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+    			
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
