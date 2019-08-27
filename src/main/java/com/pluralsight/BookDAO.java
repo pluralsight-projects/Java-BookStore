@@ -38,6 +38,7 @@ public class BookDAO {
         resultSet.close();
         statement.close();
       } catch (SQLException e) {
+    	  System.err.println("Some proble"+e.getMessage());
           e.printStackTrace();
       }
 
@@ -67,6 +68,7 @@ public class BookDAO {
 	        resultSet.close();
 	        statement.close();
   		} catch (SQLException e) {
+  			System.err.println("some problem"+e.getMessage());
   			e.printStackTrace();
   		}
         return listBook;
@@ -85,6 +87,7 @@ public class BookDAO {
 	        statement.close();
 	        return rowInserted;
         } catch (SQLException e) {
+        	System.err.println("some problem"+e.getMessage());
         		e.printStackTrace();
         }
 
