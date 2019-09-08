@@ -40,7 +40,7 @@ public class Module1_Task5_IT {
       try {
          method =  BookDAO.class.getMethod("deleteBook", int.class);
       } catch (NoSuchMethodException e) {
-         //e.printStackTrace();
+         e.printStackTrace();
       }
 
       String message = "The method deleteBook() doesn't exist in BookDAO.java.";
@@ -53,7 +53,7 @@ public class Module1_Task5_IT {
       try {
         Mockito.verify(mockConnection,Mockito.atLeast(1)).prepareStatement(sql);
         called_prepareStatement = true;
-      } catch (Throwable e) {}
+      } catch (Throwable e) {System.err.println(e.getMessage());}
 
       message = "The method deleteBook() doesn't call prepareStatement() correctly.";
       assertTrue(message, called_prepareStatement);

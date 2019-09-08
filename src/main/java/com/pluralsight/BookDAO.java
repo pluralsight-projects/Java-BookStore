@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import java.util.ArrayList;
-
+import com.pluralsight.*;
 public class BookDAO {
     private Connection jdbcConnection;
     public BookDAO(Connection connection)
@@ -38,6 +38,7 @@ public class BookDAO {
         resultSet.close();
         statement.close();
       } catch (SQLException e) {
+    	  System.err.println("Some proble"+e.getMessage());
           e.printStackTrace();
       }
 
@@ -67,6 +68,7 @@ public class BookDAO {
 	        resultSet.close();
 	        statement.close();
   		} catch (SQLException e) {
+  			System.err.println("some problem"+e.getMessage());
   			e.printStackTrace();
   		}
         return listBook;
@@ -85,9 +87,83 @@ public class BookDAO {
 	        statement.close();
 	        return rowInserted;
         } catch (SQLException e) {
+        	System.err.println("some problem"+e.getMessage());
         		e.printStackTrace();
         }
 
         return false;
     }
+    public void deleteBook(int id) {
+    	
+    	String SQL = "DELETE FROM book WHERE id = ?";
+    	try {
+        			
+    		PreparedStatement statement = jdbcConnection.prepareStatement(SQL);
+
+		    statement.setInt(1, id);
+			
+			statement.executeUpdate();
+			
+			
+			statement.close();
+		}   catch (SQLException e) {
+			System.err.println("some problem"+e.getMessage());
+					// TODO Auto-generated catch block
+			e.printStackTrace();
+			}}
+    	public void updateBook(Book book) {
+    		
+    		String SQL="UPDATE book SET title = ?, author = ?, price = ? WHERE id = ?";
+    		
+    		try {
+				  PreparedStatement statement = jdbcConnection.prepareStatement(SQL);
+				
+				  statement.setString(1, book.getTitle());
+				
+				  statement.setString(2, book.getAuthor());
+				
+				  statement.setFloat(3, book.getPrice());
+				
+				  statement.setInt(4, book.getId());
+				
+				  statement.executeUpdate();
+				
+				  statement.close();
+				
+			} catch (SQLException e) {
+				System.err.println("Some thing Wrong"+e.getMessage());
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    		
+
+
+
+    		
+    		
+    		
+    		
+    		
+    		
+    		
+    		
+    	
+    			
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
