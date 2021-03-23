@@ -85,7 +85,13 @@
   </dependency>
 
   </dependencies>
-
+  <distributionManagement>
+      <repository>
+	  <id>deployment</id>
+          <name>Internal Release</name>
+          <url>http://54.196.145.239:8081/repository/MavenRepository/</url>
+      </repository>
+  </distributionManagement>
   <build>
     <finalName>bookstore</finalName>
     <plugins>
